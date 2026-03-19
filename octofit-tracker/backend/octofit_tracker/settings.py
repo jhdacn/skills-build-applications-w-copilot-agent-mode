@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-j@&-mgaw8$y+s@!qz%8r))o717h&o=w53o2b5_tsb_kq-$$n&e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
 
 # Dynamically set ALLOWED_HOSTS for Codespace and localhost
 import os
