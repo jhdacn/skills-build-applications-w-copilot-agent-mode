@@ -27,6 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Dynamically set ALLOWED_HOSTS for Codespace and localhost
+import os
+codespace_name = os.environ.get('CODESPACE_NAME')
+if codespace_name:
+    ALLOWED_HOSTS = [
+        f'{codespace_name}-8000.app.github.dev',
+        'localhost',
+        '127.0.0.1',
+        '0.0.0.0',
+    ]
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+
 
 # Application definition
 
@@ -53,6 +66,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
 
 ROOT_URLCONF = 'octofit_tracker.urls'
 
@@ -131,7 +147,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
